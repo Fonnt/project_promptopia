@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -8,6 +9,7 @@ const EditPrompt = () => {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const promptId = searchParams.get('id');
+
 	const [submitting, setSubmitting] = useState(false);
 	const [post, setPost] = useState({
 		prompt: '',
@@ -22,10 +24,11 @@ const EditPrompt = () => {
 			setPost({
 				prompt: data.prompt,
 				tag: data.tag
-			})
-		}
+			});
+		};
+
 		if(promptId) getPromptDetails()
-	}, [promptId])
+	}, [promptId]);
 
 	const updatePrompt = async (e) => {
 		e.preventDefault();
@@ -47,7 +50,7 @@ const EditPrompt = () => {
 				router.push('/');
 			}
 		} catch (error) {
-				console.log(error);
+			console.log(error);
 		} finally {
 			setSubmitting(false);
 		}

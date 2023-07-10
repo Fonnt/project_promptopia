@@ -16,7 +16,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete}) => {
     console.log(post);
 
     if (post.creator._id === session?.user.id) return router.push("/profile");
-    router.push(`profile/${post.creator._id}?name=${post.creator.username}`);
+    router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
   };
 
   const handleCopy = () => {
@@ -33,7 +33,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete}) => {
           className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
         >
           <Image
-            src={post.creator.image ? post.creator.image : ''}
+            src={post.creator.image}
             alt="user_image"
             width={40}
             height={40}
